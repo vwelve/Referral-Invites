@@ -8,8 +8,7 @@ export default {
         database: process.env.DB_NAME || "referral_invites"
     },
     express: {
-        port: process.env.PORT,
+        port: process.env.PORT || 8000,
         secret: process.env.SECRET || v4()
     }
-
 };
