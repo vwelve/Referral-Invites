@@ -9,7 +9,7 @@ import config from '../utils/config';
 let router = Router();
 const apiUri = 'https://discord.com/api/v8';
 
-router.get('/api/:id', async (req, res) => {
+router.get('/referral/:id', async (req, res) => {
     let id = req.params.id;
     let { discord } = config;
     let redirectUri = encodeURIComponent(discord.redirectUri);
@@ -28,7 +28,7 @@ router.get('/api/:id', async (req, res) => {
 });
 
 router.get('/callback', async (req, res) => {
-    let state = req.query.state; 
+    let state = req.query.state as string; 
     let code = req.query.code as string;
     let error = req.query.error || null;
     let { discord } = config;
@@ -62,13 +62,7 @@ router.get('/callback', async (req, res) => {
             console.log(e);
             res.status(400).send("Something went wrong try again.");
         }
-        
     }
-
-});
-
-router.post('/api', (req, res) => {
-
 });
 
 export default router;
