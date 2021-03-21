@@ -1,7 +1,7 @@
 import express from 'express';
 import router from './routes/index';
 import ExpressSession from 'express-session';
-import config from './utils/config';
+import config from '../config';
 import { v4 } from 'uuid';
 
 const app = express();

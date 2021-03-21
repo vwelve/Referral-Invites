@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import DiscordUser from "../interfaces/discordUser";
-import config from "./config";
+import config from "../../config";
 
 export default async (accessToken: string, guildId: string, apiUri: string): Promise<[number, string]> => {
     axios.defaults.headers = {

@@ -1,5 +1,5 @@
 import mysql, { RowDataPacket } from 'mysql2/promise';
-import config from './config';
+import config from '../../config';
 
 export default {
     execute: async (query: string, params?: Array<string | number | undefined>) => {

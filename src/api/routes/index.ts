@@ -4,7 +4,7 @@ import { v4 } from 'uuid';
 import AccessTokenResponse from '../interfaces/accessTokenResponse';
 import Referrals from '../models/referrals';
 import addUser from '../utils/addUser';
-import config from '../utils/config';
+import config from '../../config';
 
 let router = Router();
 const apiUri = 'https://discord.com/api/v8';
@@ -28,8 +28,8 @@ router.get('/referral/:id', async (req, res) => {
 });
 
 router.get('/callback', async (req, res) => {
-    let state = req.query.state as string; 
-    let code = req.query.code as string;
+    let state = <string | undefined>req.query.state; 
+    let code = <string | undefined>req.query.code;
     let error = req.query.error || null;
     let { discord } = config;
 
@@ -59,7 +59,7 @@ router.get('/callback', async (req, res) => {
 
             res.send("You can close this tab now.");
         } catch(e) {
-            console.log(e);
+            console.log(e.response);
             res.status(400).send("Something went wrong try again.");
         }
     }
