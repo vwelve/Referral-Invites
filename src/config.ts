@@ -19,6 +19,7 @@ export default {
         botToken: process.env.BOT_TOKEN
     },
     express: {
+        baseUri: process.env.BASE_URI || "http://localhost:8000",
         port: process.env.PORT || 8000,
         secret: process.env.SECRET || v4()
     }
